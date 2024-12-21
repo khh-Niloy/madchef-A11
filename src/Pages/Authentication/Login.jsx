@@ -1,15 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useAsyncError, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContextProvider";
 
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    function handleSubmit(e){
-        e.preventDefault()
+  function handleSubmit(e) {
+    e.preventDefault();
 
-        const initialObj = new FormData(e.target)
-        const formObjData = Object.fromEntries(initialObj.entries())
-        console.log(formObjData)
-    }
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password).then((res) => {
+      console.log(res);
+      navigate("/");
+    });
+  }
 
   return (
     <div>
@@ -51,7 +58,9 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
-                <Link to="/register"><button className="btn btn-primary mt-5">Register</button></Link>
+                <Link to="/register">
+                  <button className="btn btn-primary mt-5">Register</button>
+                </Link>
               </div>
             </form>
           </div>

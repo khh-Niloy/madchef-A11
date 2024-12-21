@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 const AllFood = () => {
   const [allFood, setallFood] = useState([]);
+    const { user } = useContext(AuthContext);
+  
 
   useEffect(() => {
     fetchAllFoodData();
@@ -34,7 +37,7 @@ const AllFood = () => {
               <h2 className="card-title">{e.foodname}</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
               <div className="card-actions justify-end">
-                <Link to={`/foodDetailes/${e._id}`}><button className="btn btn-primary">Buy Now</button></Link>
+                <Link to={`/allfood/foodDetailes/${e._id}`}><button className="btn btn-primary">Buy Now</button></Link>
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ import MyOrder from "./Pages/MyOrder.jsx";
 import Detailes from "./Pages/Detailes.jsx";
 import Login from "./Pages/Authentication/Login.jsx";
 import Register from "./Pages/Authentication/Register.jsx";
+import AuthContextProvider from "./Context/AuthContextProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,9 +29,10 @@ const router = createBrowserRouter([
         element: <AllFood></AllFood>,
       },
       {
-        path: "/foodDetailes/:id",
+        path: "/allfood/foodDetailes/:id",
         element: <Detailes></Detailes>,
-        loader: ({params})=> fetch(`http://localhost:3000/fooddetailes/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/allfood/foodDetailes/${params.id}`),
       },
       {
         path: "/gallery",
@@ -62,6 +64,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </StrictMode>
 );
