@@ -12,6 +12,7 @@ import AddFood from "./Pages/AddFood.jsx";
 import MyOrder from "./Pages/MyOrder.jsx";
 import Detailes from "./Pages/Detailes.jsx";
 import Login from "./Pages/Authentication/Login.jsx";
+import Register from "./Pages/Authentication/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },
