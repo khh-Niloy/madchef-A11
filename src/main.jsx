@@ -14,6 +14,7 @@ import Detailes from "./Pages/Detailes.jsx";
 import Login from "./Pages/Authentication/Login.jsx";
 import Register from "./Pages/Authentication/Register.jsx";
 import AuthContextProvider from "./Context/AuthContextProvider.jsx";
+import Update from "./Pages/Update.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "/myfood",
         element: <MyFood></MyFood>,
+      },
+      {
+        path: "/updatefood/:id",
+        element: <Update></Update>,
+        loader: ({params})=> fetch(`http://localhost:3000/allfood/fooddetailes/${params.id}`)
       },
       {
         path: "/addfood",
