@@ -13,7 +13,7 @@ const Login = () => {
     const password = e.target.password.value;
 
     signInUser(email, password).then((res) => {
-      console.log(res);
+      // console.log(res);
       navigate("/");
     });
   }

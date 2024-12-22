@@ -14,7 +14,9 @@ const MyFood = () => {
 
   const fetchData = () => {
     axios
-      .get(`http://localhost:3000/allfood/adminfood/${user?.email}`)
+      .get(
+        `https://madchef-server-side.vercel.app/allfood/adminfood/${user?.email}`
+      )
       .then((data) => {
         setmyfood(data.data);
       });
@@ -31,10 +33,10 @@ const MyFood = () => {
             <figure>
               <img src={e.photo} alt="Shoes" />
               <Link to={`/updatefood/${e._id}`}>
-                  <TbEdit
-                    className="bg-white border border-black/20 text-3xl cursor-pointer
+                <TbEdit
+                  className="bg-white border border-black/20 text-3xl cursor-pointer
                 rounded-full p-1 -top-2 -right-2 absolute"
-                  ></TbEdit>
+                ></TbEdit>
               </Link>
             </figure>
             <div key={e._id} className="card-body">

@@ -22,7 +22,7 @@ const Register = () => {
 
     createUser(email, password).then((res) => {
       profileInfo(profile);
-      console.log(res);
+      // console.log(res);
     });
   }
 

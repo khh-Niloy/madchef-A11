@@ -33,7 +33,9 @@ const router = createBrowserRouter([
         path: "/allfood/foodDetailes/:id",
         element: <Detailes></Detailes>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allfood/foodDetailes/${params.id}`),
+          fetch(
+            `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
+          ),
       },
       {
         path: "/gallery",
@@ -46,7 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/updatefood/:id",
         element: <Update></Update>,
-        loader: ({params})=> fetch(`http://localhost:3000/allfood/fooddetailes/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://madchef-server-side.vercel.app/allfood/fooddetailes/${params.id}`
+          ),
       },
       {
         path: "/addfood",

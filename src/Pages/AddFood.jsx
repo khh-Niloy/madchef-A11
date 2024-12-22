@@ -7,12 +7,14 @@ const AddFood = () => {
 
     const inititalData = new FormData(e.target);
     const formObjData = Object.fromEntries(inititalData.entries());
-    console.log(formObjData);
+    // console.log(formObjData);
 
-    axios.post(`http://localhost:3000/addfood`, formObjData).then((res) => {
-      console.log(res);
-      e.target.reset();
-    });
+    axios
+      .post(`https://madchef-server-side.vercel.app/addfood`, formObjData)
+      .then((res) => {
+        // console.log(res);
+        e.target.reset();
+      });
   }
 
   return (

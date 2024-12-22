@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Update = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,11 +15,11 @@ const Update = () => {
 
     axios
       .put(
-        `http://localhost:3000/allfood/updatefood/${data._id}`,
+        `https://madchef-server-side.vercel.app/allfood/updatefood/${data._id}`,
         updatedFormObjData
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       });
   }
 
