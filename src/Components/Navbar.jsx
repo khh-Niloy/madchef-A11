@@ -17,6 +17,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/gallery">Gallery</NavLink>
       </li>
+    </>
+  );
+
+  const profileLinks = (
+    <>
       <li>
         <NavLink to="/myfood">My Foods</NavLink>
       </li>
@@ -70,9 +75,14 @@ const Navbar = () => {
           <div className="navbar-end">
             {user ? (
               <>
-                <button className="btn" onClick={()=>{
-                  signOutUser()
-                }}>Logout</button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    signOutUser();
+                  }}
+                >
+                  Logout
+                </button>
               </>
             ) : (
               <>
@@ -82,51 +92,30 @@ const Navbar = () => {
               </>
             )}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user ? user?.photoURL : "https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?t=st=1734832196~exp=1734835796~hmac=dbb5347b916430c9607610adc27aa2420425376177fd11443058618f18622b24&w=740"}
-                  />
+            {user && (
+              <>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user?.photoURL}
+                      />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                  >
+                    {profileLinks}
+                  </ul>
                 </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
+              </>
+            )}
           </div>
         </div>
       </div>

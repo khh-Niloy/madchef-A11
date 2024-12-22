@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContextProvider";
+import { FaEye } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, profileInfo } = useContext(AuthContext);
+  const { createUser, profileInfo, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, seterror] = useState("");
+  const [isClicked, setisClicked] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,17 +18,50 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-    // console.log(name, email, photo, password)
+    const hasUppercase = /(?=.*[A-Z])/;
+    const hasLowercase = /(?=.*[a-z])/;
+    const isAtLeast6Chars = /.{6,}/;
+
+    if (!hasUppercase.test(password)) {
+      seterror("at least one uppercase letter");
+      return;
+    }
+
+    if (!hasLowercase.test(password)) {
+      seterror("at least one lowercase letter");
+      return;
+    }
+
+    if (!isAtLeast6Chars.test(password)) {
+      seterror("at least 6 characters long");
+      return;
+    }
 
     const profile = {
       displayName: name,
       photoURL: photo,
     };
 
-    createUser(email, password).then((res) => {
-      profileInfo(profile);
-      // console.log(res);
-    });
+    createUser(email, password)
+      .then((res) => {
+        profileInfo(profile);
+        toast.success("Welcome back!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(`${err}`);
+      });
+  }
+
+  function handleGoogle() {
+    googleSignIn()
+      .then((res) => {
+        toast.success("Welcome back!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(`${err}`);
+      });
   }
 
   return (
@@ -71,23 +109,38 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={isClicked ? "text" : "password"}
                   placeholder="password"
                   className="input input-bordered"
                   name="password"
                   required
                 />
+                <FaEye
+                  onClick={() => {
+                    setisClicked(!isClicked);
+                  }}
+                  className="absolute top-14 right-5"
+                ></FaEye>
               </div>
+              <p>{error}</p>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
                 <Link to="/login">
                   <button className="btn btn-primary">Login</button>
                 </Link>
+                <button
+                  onClick={() => {
+                    handleGoogle();
+                  }}
+                  className="btn btn-neutral"
+                >
+                  Google
+                </button>
               </div>
             </form>
           </div>

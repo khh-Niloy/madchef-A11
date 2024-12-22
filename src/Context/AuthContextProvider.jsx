@@ -56,7 +56,14 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ createUser, signInUser, signOutUser, googleSignIn, user, profileInfo }}
+      value={{
+        createUser,
+        signInUser,
+        signOutUser,
+        googleSignIn,
+        user,
+        profileInfo,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useAsyncError, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContextProvider";
+import { FaEye } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isClicked, setisClicked] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,10 +15,25 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    signInUser(email, password).then((res) => {
-      // console.log(res);
-      navigate("/");
-    });
+    signInUser(email, password)
+      .then((res) => {
+        toast.success("Welcome back!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(`${err}`);
+      });
+  }
+
+  function handleGoogle() {
+    googleSignIn()
+      .then((res) => {
+        toast.success("Welcome back!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(`${err}`);
+      });
   }
 
   return (
@@ -39,17 +57,23 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={isClicked ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
+                <FaEye
+                  onClick={() => {
+                    setisClicked(!isClicked);
+                  }}
+                  className="absolute top-14 right-5"
+                ></FaEye>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -63,9 +87,18 @@ const Login = () => {
                 </Link>
               </div>
             </form>
+            <button
+              onClick={() => {
+                handleGoogle();
+              }}
+              className="btn btn-neutral"
+            >
+              Google
+            </button>
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
