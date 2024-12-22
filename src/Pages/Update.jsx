@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
@@ -7,6 +8,19 @@ const Update = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const inititalData = new FormData(e.target);
+    const updatedFormObjData = Object.fromEntries(inititalData.entries());
+    // console.log(updatedFormObjData);
+
+    axios
+      .put(
+        `http://localhost:3000/allfood/updatefood/${data._id}`,
+        updatedFormObjData
+      )
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   return (
