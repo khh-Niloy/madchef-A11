@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Update = () => {
   const data = useLoaderData();
@@ -11,6 +12,7 @@ const Update = () => {
 
     const inititalData = new FormData(e.target);
     const updatedFormObjData = Object.fromEntries(inititalData.entries());
+    updatedFormObjData.quantity = parseInt(updatedFormObjData.quantity);
     // console.log(updatedFormObjData);
 
     axios
@@ -19,7 +21,8 @@ const Update = () => {
         updatedFormObjData
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
+        toast.success("Updated");
       });
   }
 

@@ -22,7 +22,9 @@ const Purchase = () => {
     const inititalData = new FormData(e.target);
     const formObjData = Object.fromEntries(inititalData.entries());
     formObjData.foodid = data._id;
-    // console.log(formObjData);
+    formObjData.purchaseQuantity = parseInt(formObjData.purchaseQuantity);
+
+    console.log(formObjData);
 
     axios
       .post(`https://madchef-server-side.vercel.app/addorder`, formObjData)

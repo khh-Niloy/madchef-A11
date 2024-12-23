@@ -2,15 +2,18 @@ import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const inititalData = new FormData(e.target);
     const formObjData = Object.fromEntries(inititalData.entries());
+    formObjData.quantity = parseInt(formObjData.quantity);
     formObjData.purchase_count = 0;
 
     axios
@@ -19,6 +22,7 @@ const AddFood = () => {
         // console.log(res);
         e.target.reset();
         toast.success("New food item added successfully!");
+        navigate("/myfood");
       });
   }
 
