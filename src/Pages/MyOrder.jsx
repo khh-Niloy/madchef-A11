@@ -27,7 +27,7 @@ const MyOrder = () => {
       )
       .then((res) => {
         console.log(res);
-        toast.success("Order deleted");
+        toast.error("Order deleted");
         fetchData();
       });
   }

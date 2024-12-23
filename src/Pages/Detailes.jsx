@@ -1,8 +1,20 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 const Detailes = () => {
   const foodData = useLoaderData();
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  function handlePurchase(_id) {
+    if (user?.email === foodData?.useremail) {
+      toast.error("You can not purchase!");
+      return;
+    }
+    navigate(`/purchase/${_id}`);
+  }
 
   return (
     <div className="px-16 pt-10 pb-20">
@@ -59,11 +71,14 @@ const Detailes = () => {
                 Purchase
               </button>
             ) : (
-              <Link to={`/purchase/${foodData._id}`}>
-                <button className="btn btn-neutral w-full mt-5">
-                  Purchase
-                </button>
-              </Link>
+              <button
+                onClick={() => {
+                  handlePurchase(foodData._id);
+                }}
+                className="btn btn-neutral w-full mt-5"
+              >
+                Purchase
+              </button>
             )}
           </div>
         </div>
@@ -73,3 +88,9 @@ const Detailes = () => {
 };
 
 export default Detailes;
+
+{
+  /* <Link to={`/purchase/${foodData._id}`}>
+  <button className="btn btn-neutral w-full mt-5">Purchase</button>
+</Link>; */
+}
