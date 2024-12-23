@@ -3,24 +3,33 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContextProvider";
 import { TiDelete } from "react-icons/ti";
 import moment from "moment";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyOrder = () => {
   const { user } = useContext(AuthContext);
   const [myorder, setmyorder] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://madchef-server-side.vercel.app/allorder/buyerfood/${user?.email}`
-      )
-      .then((data) => {
-        setmyorder(data.data);
-      });
+    fetchData();
   }, []);
 
+  async function fetchData() {
+    const { data } = await axios.get(
+      `https://madchef-server-side.vercel.app/allorder/buyerfood/${user?.email}`
+    );
+    setmyorder(data);
+  }
 
-  function handleDelete(_id){
-    axios.delete(``)
+  function handleDelete(_id) {
+    axios
+      .delete(
+        `https://madchef-server-side.vercel.app/allorder/orderdelete/${_id}`
+      )
+      .then((res) => {
+        console.log(res);
+        toast.success("Order deleted");
+        fetchData();
+      });
   }
 
   return (
