@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
+import { AuthContext } from "../Context/AuthContextProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddFood = () => {
+  const { user } = useContext(AuthContext);
+
   function handleSubmit(e) {
     e.preventDefault();
 
     const inititalData = new FormData(e.target);
     const formObjData = Object.fromEntries(inititalData.entries());
-    // console.log(formObjData);
+    formObjData.purchase_count = 0;
 
     axios
       .post(`https://madchef-server-side.vercel.app/addfood`, formObjData)
       .then((res) => {
         // console.log(res);
         e.target.reset();
+        toast.success("New food item added successfully!");
       });
   }
 
@@ -97,10 +102,12 @@ const AddFood = () => {
                 </label>
                 <input
                   type="text"
+                  value={user?.displayName}
                   name="username"
                   placeholder="Name"
                   className="input input-bordered"
                   required
+                  readOnly
                 />
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -108,9 +115,11 @@ const AddFood = () => {
                 <input
                   type="email"
                   name="useremail"
+                  value={user?.email}
                   placeholder="Email"
                   className="input input-bordered"
                   required
+                  readOnly
                 />
               </div>
               <div className="form-control">

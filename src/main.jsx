@@ -16,6 +16,7 @@ import Register from "./Pages/Authentication/Register.jsx";
 import AuthContextProvider from "./Context/AuthContextProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import Update from "./Pages/Update.jsx";
+import Purchase from "./Pages/Purchase.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
         path: "/allfood/foodDetailes/:id",
         element: <Detailes></Detailes>,
         loader: ({ params }) =>
+          fetch(
+            `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
+          ),
+      },
+      {
+        path: "/purchase/:id",
+        element: <Purchase></Purchase>,
+        loader: ({params}) =>
           fetch(
             `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
           ),

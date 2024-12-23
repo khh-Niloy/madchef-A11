@@ -10,7 +10,9 @@ const AllFood = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/allfood?search=${searchText}`)
+      .get(
+        `https://madchef-server-side.vercel.app/allfood?search=${searchText}`
+      )
       .then((data) => {
         setallFood(data.data);
       });

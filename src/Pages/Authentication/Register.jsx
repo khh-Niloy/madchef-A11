@@ -45,7 +45,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         profileInfo(profile);
-        toast.success("Welcome back!");
+        toast.success("Account Created!");
         navigate("/");
       })
       .catch((err) => {

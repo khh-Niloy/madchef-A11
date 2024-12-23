@@ -1,13 +1,12 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Detailes = () => {
   const foodData = useLoaderData();
-//   console.log(foodData);
 
   return (
-    <div>
-      <div className="food-details-container w-[80%] mx-auto">
+    <div className="px-16 pt-10 pb-20">
+      <div className="food-details-container w-[50%] mx-auto">
         <div className="food-card bg-white shadow-md rounded-lg overflow-hidden">
           <img
             src={foodData.photo}
@@ -35,6 +34,9 @@ const Detailes = () => {
                 ${foodData.price}
               </span>
             </div>
+            <span className="quantity text-lg text-gray-600">
+              Purchase count: {foodData.purchase_count}
+            </span>
             <div className="food-author mt-4 text-gray-600">
               <p>Added by: {foodData.username}</p>
               <p>
@@ -47,6 +49,22 @@ const Detailes = () => {
                 </p>
               </p>
             </div>
+            <h1 className="text-xl text-red-600 font-semibold">
+              {parseInt(foodData.quantity) == 0 &&
+                "You cannot buy this item as it is not available."}
+            </h1>
+
+            {parseInt(foodData.quantity) == 0 ? (
+              <button disabled className="btn btn-neutral w-full mt-5">
+                Purchase
+              </button>
+            ) : (
+              <Link to={`/purchase/${foodData._id}`}>
+                <button className="btn btn-neutral w-full mt-5">
+                  Purchase
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

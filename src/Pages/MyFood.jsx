@@ -24,7 +24,7 @@ const MyFood = () => {
 
   return (
     <div>
-      <div className="w-[80%] mx-auto py-20 grid grid-cols-4">
+      <div className="w-[80%] mx-auto py-20 grid grid-cols-4 gap-8">
         {myfood.map((e) => (
           <div
             key={e._id}
@@ -41,9 +41,10 @@ const MyFood = () => {
             </figure>
             <div key={e._id} className="card-body">
               <h2 className="card-title">{e.foodname}</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
+              <p>Price: ${e.price}</p>
+              <p>Origin: {e.origin}</p>
+              <p className="line-clamp-1">{e.description}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
               </div>
             </div>
           </div>
