@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -79,6 +80,7 @@ const Navbar = () => {
                   className="btn"
                   onClick={() => {
                     signOutUser();
+                    toast.success("Log out");
                   }}
                 >
                   Logout
@@ -94,7 +96,7 @@ const Navbar = () => {
 
             {user && (
               <>
-                <div className="dropdown dropdown-end">
+                <div title={user.email} className="dropdown dropdown-end">
                   <div
                     tabIndex={0}
                     role="button"

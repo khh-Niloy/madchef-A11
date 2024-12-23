@@ -25,7 +25,7 @@ const Purchase = () => {
     // console.log(formObjData);
 
     axios
-      .post(`https://madchef-server-side.vercel.app/addbuyer`, formObjData)
+      .post(`https://madchef-server-side.vercel.app/addorder`, formObjData)
       .then((res) => {
         console.log(res);
         e.target.reset();
