@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
+import { IoMoon } from "react-icons/io5";
+import { PiSunFill } from "react-icons/pi";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
   // console.log(user);
 
   const links = (
@@ -74,6 +78,9 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="navbar-end">
+            <button onClick={toggleDarkMode} className="text-xl mr-3">
+              {isDarkMode ? <PiSunFill></PiSunFill> : <IoMoon></IoMoon>}
+            </button>
             {user ? (
               <>
                 <button

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Root = () => {
   const navigation = useNavigation();
   const [isLoading, setisLoading] = useState(false);
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     if (navigation?.state === "loading") {
@@ -16,19 +18,18 @@ const Root = () => {
   }, [navigation?.state]);
 
   return (
-    <div>
+    <div className="font">
       <Navbar></Navbar>
-
-      {isLoading ? (
-        <>
-          <div className="w-full h-screen flex items-center justify-center">
-            <span className="loading loading-spinner loading-lg"></span>
-          </div>
-        </>
-      ) : (
-        <Outlet></Outlet>
+      {isLoading && (
+        <div
+          className={`fixed inset-0 flex items-center justify-center ${
+            isDarkMode ? "bg-[#191A23]" : "bg-white"
+          } z-50`}
+        >
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
       )}
-
+      <Outlet />
       <Footer></Footer>
     </div>
   );

@@ -17,6 +17,7 @@ import AuthContextProvider from "./Context/AuthContextProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import Update from "./Pages/Update.jsx";
 import Purchase from "./Pages/Purchase.jsx";
+import DarkModeProvider from "./DarkModeProvider/DarkModeProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/purchase/:id",
         element: <Purchase></Purchase>,
-        loader: ({params}) =>
+        loader: ({ params }) =>
           fetch(
             `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
           ),
@@ -85,9 +86,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthContextProvider>
-      <RouterProvider router={router} />
-      <Toaster position="top-center" reverseOrder={true} />
-    </AuthContextProvider>
+    <DarkModeProvider>
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+        <Toaster position="top-center" reverseOrder={true} />
+      </AuthContextProvider>
+    </DarkModeProvider>
   </StrictMode>
 );
