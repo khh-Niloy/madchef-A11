@@ -1,11 +1,73 @@
-import React from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    return (
-        <div>
-            Home
-        </div>
+  const [homeData, sethomeData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const { data } = await axios.get(
+      `https://madchef-server-side.vercel.app/allfood`
     );
+    sethomeData(data);
+  }
+
+  //   console.log(homeData);
+
+  const filterData = homeData
+    .sort(function (a, b) {
+      return b.purchase_count - a.purchase_count;
+    })
+    .slice(0, 6);
+
+  return (
+    <div>
+      <div className="w-[80%] mx-auto pb-20 pt-8">
+        <h1 className="text-center font-semibold text-2xl mb-10">
+          Top 6 best-selling food items <span className="text-lg font-normal">(by purchase count)</span>
+        </h1>
+
+        <div className="grid grid-cols-3 gap-5 w-[80%] mx-auto">
+          {filterData.map((e) => (
+            <div
+              key={e._id}
+              className="card card-compact bg-base-100 shadow-xl"
+            >
+              <figure>
+                <img src={e.photo} alt="Shoes" />
+              </figure>
+              <div key={e._id} className="card-body">
+                <h2 className="card-title">{e.foodname}</h2>
+                <p>Price: ${e.price}</p>
+                <p>Total Purchased: {e.purchase_count}</p>
+                <p className="line-clamp-1">{e.description}</p>
+                <div className="card-actions justify-end">
+                  <Link
+                    className="w-full"
+                    to={`/allfood/foodDetailes/${e._id}`}
+                  >
+                    <button className="btn btn-neutral text-white w-full mt-2">
+                      Details
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center mt-20">
+          <Link to={`/allfood`}>
+            <button className="btn btn-primary">See All</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;

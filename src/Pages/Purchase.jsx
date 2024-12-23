@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Purchase = () => {
   const data = useLoaderData();
-  console.log(data);
   const { user } = useContext(AuthContext);
   const [date, setdate] = useState(new Date(Date.now()));
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,6 +31,7 @@ const Purchase = () => {
       .then((res) => {
         console.log(res);
         e.target.reset();
+        navigate("/allfood")
         toast.success("Order placed successfully!");
       });
   }
