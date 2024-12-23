@@ -1,22 +1,39 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const [homeData, sethomeData] = useState([]);
+  //   const [homeData, sethomeData] = useState([]);
+  //   const navigation = useNavigation()
+  //   console.log(navigation)
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  //   useEffect(() => {
+  //     fetchData();
+  //   }, []);
 
-  async function fetchData() {
+  //   async function fetchData() {
+  //     const { data } = await axios.get(
+  //       `https://madchef-server-side.vercel.app/allfood`
+  //     );
+  //     sethomeData(data);
+  //   }
+
+  async function fetchFoodData() {
     const { data } = await axios.get(
       `https://madchef-server-side.vercel.app/allfood`
     );
-    sethomeData(data);
+    return data;
   }
 
-  //   console.log(homeData);
+  const {
+    data: homeData = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["homefood"],
+    queryFn: fetchFoodData,
+  });
 
   const filterData = homeData
     .sort(function (a, b) {
@@ -24,11 +41,20 @@ const Home = () => {
     })
     .slice(0, 6);
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="w-[80%] mx-auto pb-20 pt-8">
         <h1 className="text-center font-semibold text-2xl mb-10">
-          Top 6 best-selling food items <span className="text-lg font-normal">(by purchase count)</span>
+          Top 6 best-selling food items{" "}
+          <span className="text-lg font-normal">(by purchase count)</span>
         </h1>
 
         <div className="grid grid-cols-3 gap-5 w-[80%] mx-auto">
