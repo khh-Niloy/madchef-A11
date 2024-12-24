@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
+import PageTitle from "../Components/PageTitle";
 
 const AllFood = () => {
   const [allFood, setallFood] = useState([]);
@@ -20,9 +21,10 @@ const AllFood = () => {
 
   return (
     <div>
-      <div>
-        <h1></h1>
-      </div>
+      <PageTitle
+        image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831069.jpg?t=st=1735052370~exp=1735055970~hmac=71c72c80c30c2e2fae3a94e8f096e0c1dae0d1858e9958e94cd67d8b42e5d1b3&w=1380"
+        text="All Foods"
+      ></PageTitle>
 
       <div className="w-[30%] mx-auto mt-8">
         <label className="input input-bordered flex items-center gap-2">

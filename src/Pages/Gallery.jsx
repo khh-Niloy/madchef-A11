@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css"; // Import default styles
+import "yet-another-react-lightbox/styles.css";
 
 const Gallery = () => {
   const [foodData, setfoodData] = useState([]);
