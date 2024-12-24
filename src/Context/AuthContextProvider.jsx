@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase/Firebase";
+import axios from "axios";
 
 export const AuthContext = React.createContext();
 const AuthContextProvider = ({ children }) => {
@@ -32,6 +33,7 @@ const AuthContextProvider = ({ children }) => {
 
   const provider = new GoogleAuthProvider();
   function googleSignIn() {
+    setloading(true);
     return signInWithPopup(auth, provider);
   }
 
@@ -47,7 +49,26 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setuser(currentUser);
-      setloading(false);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios
+          .post("https://madchef-server-side.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            setloading(false);
+          });
+      } else {
+        axios
+          .post(
+            "https://madchef-server-side.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
+          .then((res) => {
+            setloading(false);
+          });
+      }
     });
     return () => {
       unsubscribe();
@@ -63,7 +84,7 @@ const AuthContextProvider = ({ children }) => {
         googleSignIn,
         user,
         profileInfo,
-        loading
+        loading,
       }}
     >
       {children}

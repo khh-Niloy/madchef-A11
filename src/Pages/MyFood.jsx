@@ -3,23 +3,28 @@ import axios from "axios";
 import { AuthContext } from "../Context/AuthContextProvider";
 import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../Custom/useAxiosSecure";
 
 const MyFood = () => {
   const { user } = useContext(AuthContext);
   const [myfood, setmyfood] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     fetchData();
   }, [user]);
 
   const fetchData = () => {
-    axios
+    /* axios
       .get(
         `https://madchef-server-side.vercel.app/allfood/adminfood/${user?.email}`
       )
       .then((data) => {
         setmyfood(data.data);
-      });
+      }); */
+    axiosSecure.get(`/allfood/adminfood/${user?.email}`).then((data) => {
+      setmyfood(data.data);
+    });
   };
 
   return (
