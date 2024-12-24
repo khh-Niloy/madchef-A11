@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import PageTitle from "../Components/PageTitle";
 
 const Gallery = () => {
   const [foodData, setfoodData] = useState([]);
@@ -17,6 +18,11 @@ const Gallery = () => {
 
   return (
     <div>
+      <PageTitle
+        image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831069.jpg?t=st=1735052370~exp=1735055970~hmac=71c72c80c30c2e2fae3a94e8f096e0c1dae0d1858e9958e94cd67d8b42e5d1b3&w=1380"
+        text="Gallery"
+      ></PageTitle>
+
       <div className="grid grid-cols-4 gap-5 w-[80%] mx-auto pt-10 pb-20">
         {foodData.map((e, index) => (
           <div>
