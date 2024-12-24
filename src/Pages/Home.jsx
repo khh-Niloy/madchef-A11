@@ -69,7 +69,7 @@ const Home = () => {
               <div key={e._id} className="card-body">
                 <h2 className="card-title">{e.foodname}</h2>
                 <p>Price: ${e.price}</p>
-                <p>Total Purchased: {e.purchase_count}</p>
+                <p className="text-xs">Purchase Count: {e.purchase_count}</p>
                 <p className="line-clamp-1">{e.description}</p>
                 <div className="card-actions justify-end">
                   <Link
