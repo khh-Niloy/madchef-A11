@@ -55,10 +55,10 @@ const router = createBrowserRouter([
             <Purchase></Purchase>
           </PrivateRouter>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
-          ),
+        // loader: ({ params }) =>
+        //   fetch(
+        //     `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
+        //   ),
       },
       {
         path: "/gallery",
@@ -90,7 +90,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myorder",
-        element: <PrivateRouter><MyOrder></MyOrder></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <MyOrder></MyOrder>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",

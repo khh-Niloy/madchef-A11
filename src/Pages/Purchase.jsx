@@ -1,14 +1,30 @@
-import React, { useContext, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import useAxiosSecure from "../Custom/useAxiosSecure";
 
 const Purchase = () => {
-  const data = useLoaderData();
+  // const data = useLoaderData();
   const { user } = useContext(AuthContext);
   const [date, setdate] = useState(new Date(Date.now()));
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
+  const [data, setdata] = useState([]);
+
+  // console.log(id)
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+
+  async function fetchData() {
+    axiosSecure.get(`/allfood/fooddetailes/purchase/${id}`).then((data) => {
+      setdata(data.data);
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +47,7 @@ const Purchase = () => {
       .then((res) => {
         console.log(res);
         e.target.reset();
-        navigate("/allfood")
+        navigate("/allfood");
         toast.success("Order placed successfully!");
       });
   }
