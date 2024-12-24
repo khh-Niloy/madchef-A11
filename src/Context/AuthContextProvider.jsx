@@ -63,6 +63,7 @@ const AuthContextProvider = ({ children }) => {
         googleSignIn,
         user,
         profileInfo,
+        loading
       }}
     >
       {children}

@@ -10,7 +10,7 @@ const MyFood = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [user]);
 
   const fetchData = () => {
     axios
@@ -44,8 +44,7 @@ const MyFood = () => {
               <p>Price: ${e.price}</p>
               <p>Origin: {e.origin}</p>
               <p className="line-clamp-1">{e.description}</p>
-              <div className="card-actions justify-end">
-              </div>
+              <div className="card-actions justify-end"></div>
             </div>
           </div>
         ))}

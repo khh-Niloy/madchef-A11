@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useAsyncError, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContextProvider";
 import { FaEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,6 +8,7 @@ const Login = () => {
   const { signInUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isClicked, setisClicked] = useState(false);
+  const location = useLocation();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,7 +19,7 @@ const Login = () => {
     signInUser(email, password)
       .then((res) => {
         toast.success("Welcome back!");
-        navigate("/");
+        location.state ? navigate(`${location.state}`) : navigate(`/`);
       })
       .catch((err) => {
         toast.error(`${err}`);

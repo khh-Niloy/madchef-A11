@@ -24,6 +24,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import ErrorPage from "./Pages/ErrorPage.jsx";
+import PrivateRouter from "./Private/PrivateRouter.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/purchase/:id",
-        element: <Purchase></Purchase>,
+        element: (
+          <PrivateRouter>
+            <Purchase></Purchase>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
@@ -61,7 +66,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myfood",
-        element: <MyFood></MyFood>,
+        element: (
+          <PrivateRouter>
+            <MyFood></MyFood>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/updatefood/:id",
@@ -73,11 +82,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/addfood",
-        element: <AddFood></AddFood>,
+        element: (
+          <PrivateRouter>
+            <AddFood></AddFood>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/myorder",
-        element: <MyOrder></MyOrder>,
+        element: <PrivateRouter><MyOrder></MyOrder></PrivateRouter>,
       },
       {
         path: "/login",

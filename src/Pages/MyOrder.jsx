@@ -11,7 +11,7 @@ const MyOrder = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [user]);
 
   async function fetchData() {
     const { data } = await axios.get(
