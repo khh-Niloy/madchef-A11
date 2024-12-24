@@ -35,7 +35,8 @@ const Gallery = () => {
 
                   <div className="mx-5">
                     <h1 className="text-white text-[9px] font-semibold duration-300 line-clamp-3">
-                      {e.foodname} : <span className="font-normal">{e.description}</span>
+                      {e.foodname} :{" "}
+                      <span className="font-normal">{e.description}</span>
                     </h1>
                   </div>
                 </div>

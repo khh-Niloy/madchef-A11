@@ -23,11 +23,13 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+import ErrorPage from "./Pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
