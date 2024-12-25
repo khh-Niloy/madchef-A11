@@ -35,20 +35,24 @@ const MyFood = () => {
             key={e._id}
             className="relative card card-compact bg-base-100 shadow-xl"
           >
-            <figure>
-              <img src={e.photo} alt="Shoes" />
+            <figure className="rounded-2xl shadow-xl h-[10rem]">
+              <img
+                className="object-cover w-full h-[10rem]"
+                src={e.photo}
+                alt="Shoes"
+              />
               <Link to={`/updatefood/${e._id}`}>
                 <TbEdit
-                  className="bg-white border border-black/20 text-3xl cursor-pointer
-                rounded-full p-1 -top-2 -right-2 absolute"
+                  className="bg-blue-600 border-[5px] hover:scale-[1.2] duration-300 border-white text-4xl cursor-pointer
+                rounded-full p-1.5 text-white -top-2 -right-2 absolute"
                 ></TbEdit>
               </Link>
             </figure>
-            <div key={e._id} className="card-body">
+            <div key={e._id} className="p-4">
               <h2 className="card-title">{e.foodname}</h2>
-              <p>Price: ${e.price}</p>
-              <p>Origin: {e.origin}</p>
-              <p className="line-clamp-1">{e.description}</p>
+              <p className="text-sm">Price: ${e.price}</p>
+              <p className="text-sm">Origin: {e.origin}</p>
+              <p className="line-clamp-1 text-sm">{e.description}</p>
               <div className="card-actions justify-end"></div>
             </div>
           </div>
