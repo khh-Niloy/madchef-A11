@@ -13,7 +13,6 @@ const Update = () => {
     const inititalData = new FormData(e.target);
     const updatedFormObjData = Object.fromEntries(inititalData.entries());
     updatedFormObjData.quantity = parseInt(updatedFormObjData.quantity);
-    // console.log(updatedFormObjData);
 
     axios
       .put(
@@ -32,7 +31,7 @@ const Update = () => {
         <div className="hero bg-base-100 pb-20 pt-5">
           <div className="hero-content flex-col w-full">
             <div className="text-center lg:text-left">
-              <h1 className="text-3xl font-bold">Add Food</h1>
+              <h1 className="text-3xl font-bold mb-3">Update your food information</h1>
             </div>
             <div className="card bg-base-100 w-[80%] shrink-0 shadow-2xl">
               <form onSubmit={handleSubmit} className="card-body">
@@ -153,11 +152,13 @@ const Update = () => {
                     defaultValue={data.description}
                     cols="30"
                     rows="5"
-                    className="border border-black/15 rounded-md"
+                    className="border border-black/15 rounded-md p-3"
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">update</button>
+                  <button className="btn hover:bg-blue-600 hover:border-none btn-neutral text-white w-full mt-2">
+                    update
+                  </button>
                 </div>
               </form>
             </div>
