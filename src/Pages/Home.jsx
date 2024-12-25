@@ -51,17 +51,21 @@ const Home = () => {
 
   return (
     <div>
-      <div className="relative flex items-center justify-center h-[32rem] w-full">
+      <div className="relative flex items-center justify-center lg:h-[32rem] h-[26rem] w-full">
         <img
-          className="object-cover h-[32rem] w-full"
+          className="object-cover lg:h-[32rem] h-[26rem] w-full"
           src="https://i.ibb.co.com/nLdV4bS/content.png"
           alt=""
         />
 
-        <div className="absolute w-[60%] text-center flex items-center flex-col justify-center">
+        <div className="absolute lg:w-[60%] text-center flex items-center flex-col justify-center">
           <div>
-            <h1 className="text-5xl font-semibold text-[#ff2727]">Madchef</h1>
-            <p className="text-5xl font-semibold">Crafting Flavor Magic</p>
+            <h1 className="lg:text-5xl text-4xl font-semibold text-[#ff2727]">
+              Madchef
+            </h1>
+            <p className="lg:text-5xl text-4xl font-semibold">
+              Crafting Flavor Magic
+            </p>
           </div>
           <p className="text-sm mt-3 w-[80%] text-black/70">
             Dive into a culinary journey where every dish tells a story, crafted

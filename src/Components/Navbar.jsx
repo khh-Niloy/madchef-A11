@@ -116,7 +116,7 @@ const Navbar = () => {
               <div tabIndex={0} role="button" className="ml-2 lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 "
+                  className="h-5 w-5 md:h-6 md:w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="white"
@@ -137,7 +137,7 @@ const Navbar = () => {
               </ul>
             </div>
             <img
-              className="lg:w-[8%] w-[15%] ml-5"
+              className="lg:w-[8%] md:w-[12%] sm:w-[13%] w-[17%] ml-5"
               src="/logowhite.svg"
               alt=""
             />
