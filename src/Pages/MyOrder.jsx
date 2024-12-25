@@ -6,11 +6,14 @@ import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosSecure from "../Custom/useAxiosSecure";
 import { RxCross2 } from "react-icons/rx";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const MyOrder = () => {
   const { user } = useContext(AuthContext);
   const [myorder, setmyorder] = useState([]);
   const axiosSecure = useAxiosSecure();
+    const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
+  
 
   useEffect(() => {
     fetchData();
@@ -47,10 +50,14 @@ const MyOrder = () => {
         {myorder.map((e) => (
           <div
             key={e._id}
-            className="relative card card-compact bg-base-100 shadow-xl"
+            className={`relative card card-compact bg-base-100 shadow-xl ${isDarkMode && "text-black"}`}
           >
             <figure className="rounded-2xl shadow-xl h-[10rem]">
-              <img src={e.photo} className="object-cover w-full h-[10rem]" alt="Shoes" />
+              <img
+                src={e.photo}
+                className="object-cover w-full h-[10rem]"
+                alt="Shoes"
+              />
               <RxCross2
                 onClick={() => {
                   handleDelete(e._id);

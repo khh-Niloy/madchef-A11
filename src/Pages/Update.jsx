@@ -1,11 +1,12 @@
 import axios from "axios";
-import React from "react";
+import React, { isValidElement, useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Update = () => {
   const data = useLoaderData();
-  // console.log(data);
+    const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,14 +29,14 @@ const Update = () => {
   return (
     <div>
       <div>
-        <div className="hero bg-base-100 pb-20 pt-5">
+        <div className={`hero ${isDarkMode ? "bg-[#191A23]" : "bg-white"} pb-20 pt-5 duration-300`}>
           <div className="hero-content flex-col w-full">
             <div className="text-center lg:text-left">
               <h1 className="text-3xl font-bold mb-3">
                 Update your food information
               </h1>
             </div>
-            <div className="card bg-base-100 w-[80%] shrink-0 shadow-2xl">
+            <div className={`card bg-base-100 w-[80%] shrink-0 shadow-2xl ${isDarkMode && "text-black"}`}>
               <form onSubmit={handleSubmit} className="card-body">
                 <div className="form-control">
                   <label className="label">
