@@ -49,8 +49,8 @@ const MyOrder = () => {
             key={e._id}
             className="relative card card-compact bg-base-100 shadow-xl"
           >
-            <figure className="rounded-2xl shadow-xl">
-              <img src={e.photo} alt="Shoes" />
+            <figure className="rounded-2xl shadow-xl h-[10rem]">
+              <img src={e.photo} className="object-cover w-full h-[10rem]" alt="Shoes" />
               <RxCross2
                 onClick={() => {
                   handleDelete(e._id);

@@ -18,69 +18,65 @@ const Detailes = () => {
 
   return (
     <div className="px-16 pt-10 pb-20">
-      <div className="food-details-container w-[50%] mx-auto">
-        <div className="food-card bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="food-details-container w-[80%] mx-auto">
+        <div className="flex items-center">
           <img
             src={foodData.photo}
             alt={foodData.foodname}
-            className="food-image w-full h-64 object-cover"
+            className="food-image w-66 h-44 object-cover rounded-xl"
           />
-          <div className="food-info p-4">
-            <h2 className="food-name text-2xl font-bold">
+          <div className="ml-5 flex flex-col gap-1">
+            <h2 className="food-name text-4xl font-bold">
               {foodData.foodname}
             </h2>
-            <p className="food-category text-sm text-gray-500">
-              {foodData.category}
+            <p className="food-category text-md text-black">
+              Category: {foodData.category}
             </p>
-            <p className="food-origin text-sm text-gray-500">
+            <p className="food-origin text-md text-black">
               Origin: {foodData.origin}
             </p>
-            <p className="food-description mt-2 text-gray-700">
-              {foodData.description}
-            </p>
-            <div className="food-price mt-4 flex items-center justify-between">
-              <span className="quantity text-lg text-gray-600">
-                Quantity: {foodData.quantity}
-              </span>
-              <span className="price text-xl font-semibold text-green-600">
-                ${foodData.price}
-              </span>
-            </div>
-            <span className="quantity text-lg text-gray-600">
-              Purchase count: {foodData.purchase_count}
+            <span className="price text-xl font-semibold text-[#FF2727]">
+              Price: ${foodData.price}
             </span>
-            <div className="food-author mt-4 text-gray-600">
-              <p>Added by: {foodData.username}</p>
-              <p>
-                Email:{" "}
-                <p
-                  href={`mailto:${foodData.useremail}`}
-                  className="text-blue-600"
-                >
-                  {foodData.useremail}
-                </p>
-              </p>
-            </div>
-            <h1 className="text-xl text-red-600 font-semibold">
-              {parseInt(foodData.quantity) == 0 &&
-                "You cannot buy this item as it is not available."}
-            </h1>
-
-            {parseInt(foodData.quantity) == 0 ? (
-              <button disabled className="btn btn-neutral w-full mt-5">
-                Purchase
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  handlePurchase(foodData._id);
-                }}
-                className="btn btn-neutral w-full mt-5"
-              >
-                Purchase
-              </button>
-            )}
           </div>
+        </div>
+        <div>
+          <p className="food-description mt-5 text-black">
+            {foodData.description}
+          </p>
+          <div className="food-price mt-4 flex items-center justify-between">
+            <span className="quantity text-md text-black">
+              Quantity: {foodData.quantity}
+            </span>
+          </div>
+          <span className="quantity text-md text-black">
+            Purchase count: {foodData.purchase_count}
+          </span>
+          <div className="food-author mt-4 text-black">
+            <p>Added by: {foodData.username}</p>
+            <p>
+              Email: {foodData.useremail}
+            </p>
+          </div>
+          <h1 className="text-lg text-[#FF2727] font-semibold mt-3">
+            {parseInt(foodData.quantity) == 0 &&
+              "*You cannot buy this item as it is not available!"}
+          </h1>
+
+          {parseInt(foodData.quantity) == 0 ? (
+            <button disabled className="btn btn-neutral w-full mt-5">
+              Purchase
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                handlePurchase(foodData._id);
+              }}
+              className="btn btn-neutral w-full mt-5 hover:bg-[#FF2727] text-white border-none"
+            >
+              Purchase
+            </button>
+          )}
         </div>
       </div>
     </div>
