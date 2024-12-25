@@ -3,11 +3,13 @@ import axios from "axios";
 import { Link, useNavigation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import PageTitle from "../Components/PageTitle";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const AllFood = () => {
   const [allFood, setallFood] = useState([]);
   const { user } = useContext(AuthContext);
   const [searchText, setsearchText] = useState("");
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     axios
@@ -27,7 +29,11 @@ const AllFood = () => {
         subtext="Explore Our All-Time Favorite Dishes Handpicked to Satisfy Your Cravings"
       ></PageTitle>
 
-      <div className="w-[40%] mx-auto mt-8 py-3">
+      <div
+        className={`lg:w-[40%] md:w-[55%] sm:w-[60%] w-[80%] mx-auto mt-8 py-3 ${
+          isDarkMode && "text-black"
+        }`}
+      >
         <label className="input input-bordered flex items-center gap-2">
           <input
             type="text"
@@ -52,7 +58,7 @@ const AllFood = () => {
         </label>
       </div>
 
-      <div className="w-[80%] mx-auto pb-20 pt-10 grid grid-cols-4 gap-5">
+      <div className="w-[80%] mx-auto pb-20 pt-10 grid lg:grid-cols-4 sm:grid-cols-2 gap-5">
         {allFood.map((e) => (
           <div
             key={e._id}
@@ -71,7 +77,7 @@ const AllFood = () => {
                 alt="Shoes"
               />
             </figure>
-            <div key={e._id} className="p-4">
+            <div key={e._id} className={`p-4 ${isDarkMode && "text-black"}`}>
               <h2 className="card-title">{e.foodname}</h2>
               <p className="text-sm">Origin: {e.origin}</p>
               <p className="line-clamp-2 text-sm mt-1">{e.description}</p>

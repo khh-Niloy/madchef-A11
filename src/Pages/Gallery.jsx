@@ -24,7 +24,7 @@ const Gallery = () => {
         subtext="Discover a Vibrant Gallery of Culinary Masterpieces from Around the World"
       ></PageTitle>
 
-      <div className="grid grid-cols-4 gap-5 w-[80%] mx-auto pt-10 pb-20">
+      <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-5 w-[80%] mx-auto pt-10 pb-20">
         {foodData.map((e, index) => (
           <div>
             <div
