@@ -111,7 +111,7 @@ const Home = () => {
               className="card card-compact bg-base-100 shadow-xl"
             >
               <figure className="h-[10rem] drop-shadow-xl relative">
-                <p className="text-[9px] left-2 bottom-2 drop-shadow-xl absolute bg-white px-3 py-1 rounded-lg">
+                <p className="text-[9px] left-3 bottom-3 drop-shadow-xl absolute bg-white px-3 py-1 rounded-lg">
                   Purchase Count: {e.purchase_count}
                 </p>
                 <img

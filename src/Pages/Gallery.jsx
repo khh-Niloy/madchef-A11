@@ -19,8 +19,9 @@ const Gallery = () => {
   return (
     <div>
       <PageTitle
-        image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831069.jpg?t=st=1735052370~exp=1735055970~hmac=71c72c80c30c2e2fae3a94e8f096e0c1dae0d1858e9958e94cd67d8b42e5d1b3&w=1380"
-        text="Gallery"
+        image="https://img.freepik.com/free-photo/hand-cooking-mushrooms-pot_32991-2593.jpg?t=st=1735132689~exp=1735136289~hmac=07f2e8f7d6e6f573d2fc7421d1365390f3f7285dd26b1a764b5bd0a24d45a945&w=1380"
+        text="A Feast for Your Eyes"
+        subtext="Discover a Vibrant Gallery of Culinary Masterpieces from Around the World"
       ></PageTitle>
 
       <div className="grid grid-cols-4 gap-5 w-[80%] mx-auto pt-10 pb-20">

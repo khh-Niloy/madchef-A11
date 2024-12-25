@@ -22,11 +22,12 @@ const AllFood = () => {
   return (
     <div>
       <PageTitle
-        image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831069.jpg?t=st=1735052370~exp=1735055970~hmac=71c72c80c30c2e2fae3a94e8f096e0c1dae0d1858e9958e94cd67d8b42e5d1b3&w=1380"
-        text="All Foods"
+        image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831065.jpg?t=st=1735131997~exp=1735135597~hmac=0166f35354e53b1fd3c54b53cb8d567bfd16d6edce8ac5330978f877aa4e3711&w=1380"
+        text="Welcome to the World of Flavorful Delights"
+        subtext="Explore Our All-Time Favorite Dishes Handpicked to Satisfy Your Cravings"
       ></PageTitle>
 
-      <div className="w-[30%] mx-auto mt-8">
+      <div className="w-[40%] mx-auto mt-8 py-3">
         <label className="input input-bordered flex items-center gap-2">
           <input
             type="text"
@@ -53,18 +54,30 @@ const AllFood = () => {
 
       <div className="w-[80%] mx-auto pb-20 pt-10 grid grid-cols-4 gap-5">
         {allFood.map((e) => (
-          <div key={e._id} className="card card-compact bg-base-100 shadow-xl">
-            <figure>
-              <img src={e.photo} alt="Shoes" />
+          <div
+            key={e._id}
+            className="card card-compact bg-base-100 shadow-xl hover:scale-[1.03] duration-300"
+          >
+            <figure className="h-[10rem] drop-shadow-xl rounded-2xl relative">
+              <p
+                className="text-[9px] left-3
+              bottom-3 drop-shadow-xl absolute bg-[#FF2727] text-white px-3 py-1 rounded-lg font-medium"
+              >
+                Price: ${e.price}
+              </p>
+              <img
+                className="object-cover h-[10rem] w-full"
+                src={e.photo}
+                alt="Shoes"
+              />
             </figure>
-            <div key={e._id} className="card-body">
+            <div key={e._id} className="p-4">
               <h2 className="card-title">{e.foodname}</h2>
-              <p>Price: ${e.price}</p>
-              <p>Origin: {e.origin}</p>
-              <p className="line-clamp-1">{e.description}</p>
+              <p className="text-sm">Origin: {e.origin}</p>
+              <p className="line-clamp-2 text-sm mt-1">{e.description}</p>
               <div className="card-actions justify-end">
                 <Link className="w-full" to={`/allfood/foodDetailes/${e._id}`}>
-                  <button className="btn btn-neutral text-white w-full mt-2">
+                  <button className="btn hover:bg-[#FF2727] hover:border-none btn-neutral text-white w-full mt-2">
                     Details
                   </button>
                 </Link>

@@ -5,6 +5,7 @@ import { TiDelete } from "react-icons/ti";
 import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosSecure from "../Custom/useAxiosSecure";
+import { RxCross2 } from "react-icons/rx";
 
 const MyOrder = () => {
   const { user } = useContext(AuthContext);
@@ -35,27 +36,39 @@ const MyOrder = () => {
 
   return (
     <div>
-      <div className="w-[80%] mx-auto py-20 grid grid-cols-4 gap-8">
+      <div className="w-[80%] mx-auto text-center mt-10">
+        <h1 className="text-3xl font-semibold">My Orders</h1>
+        <p className="text-sm mt-1">
+          Track Your Favorite Meals and Relive the Flavorful Moments
+        </p>
+      </div>
+
+      <div className="w-[80%] mx-auto pb-20 pt-10 grid grid-cols-4 gap-8">
         {myorder.map((e) => (
           <div
             key={e._id}
             className="relative card card-compact bg-base-100 shadow-xl"
           >
-            <figure>
+            <figure className="rounded-2xl shadow-xl">
               <img src={e.photo} alt="Shoes" />
-              <TiDelete
+              <RxCross2
                 onClick={() => {
                   handleDelete(e._id);
                 }}
-                className="bg-white border border-black/20 text-3xl cursor-pointer
-                rounded-full p-1 -top-2 -right-2 absolute"
-              ></TiDelete>
+                className="bg-[#E8252E] border-[5px] hover:scale-[1.2] duration-300 border-white text-4xl cursor-pointer
+                rounded-full p-1.5 text-white -top-2 -right-2 absolute"
+              ></RxCross2>
             </figure>
-            <div key={e._id} className="card-body">
+            <div key={e._id} className="p-4">
               <h2 className="card-title">{e.foodname}</h2>
-              <p>Price: ${e.price}</p>
-              <p>
-                Buying time:{" "}
+              <p className="text-sm">
+                <span className="font-semibold">Price:</span> ${e.price}
+              </p>
+              <p className="text-sm">
+                <span className="font-semibold">Food Owner:</span> {e.useremail}
+              </p>
+              <p className="text-sm">
+                <span className="font-semibold">Buying time:</span>{" "}
                 {moment(e.buyingdate).format("MMMM Do YYYY, h:mm:ss")}
               </p>
               <p className="line-clamp-1">{e.description}</p>
