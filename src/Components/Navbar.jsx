@@ -14,13 +14,81 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-white font-semibold underline text-md duration-300"
+              : "text-white font-light duration-300"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allfood">All Foods</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-white font-semibold underline text-md duration-300 ml-9"
+              : "text-white font-light duration-300 ml-9"
+          }
+          to="/allfood"
+        >
+          All Foods
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/gallery">Gallery</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-white font-semibold underline text-md duration-300 ml-9"
+              : "text-white font-light duration-300 ml-9"
+          }
+          to="/gallery"
+        >
+          Gallery
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const menubarLinks = (
+    <>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/allfood"
+        >
+          All Foods
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/gallery"
+        >
+          Gallery
+        </NavLink>
       </li>
     </>
   );
@@ -42,20 +110,16 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-[#E8252E]">
           <div className="navbar-start">
             <div className="dropdown">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden"
-              >
+              <div tabIndex={0} role="button" className="ml-2 lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-5 w-5 "
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  stroke="white"
                 >
                   <path
                     strokeLinecap="round"
@@ -69,25 +133,36 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
-                {links}
+                {menubarLinks}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">Madchef</a>
+            <img
+              className="lg:w-[8%] w-[15%] ml-5"
+              src="/logowhite.svg"
+              alt=""
+            />
+            <Link to="/">
+              <p className="ml-2 font-semibold text-xl text-white">Madchef</p>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{links}</ul>
+            <ul className="menu-horizontal px-1">{links}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end lg:mr-5 mr-1">
             <button onClick={toggleDarkMode} className="text-xl mr-3">
-              {isDarkMode ? <PiSunFill></PiSunFill> : <IoMoon></IoMoon>}
+              {isDarkMode ? (
+                <PiSunFill className="text-white"></PiSunFill>
+              ) : (
+                <IoMoon className="text-white"></IoMoon>
+              )}
             </button>
             {user ? (
               <>
                 <button
-                  className="btn"
+                  className="text-sm text-[#E8252E] rounded-full font-semibold mr-2 bg-white px-3 py-1 hover:scale-[1.05] duration-300"
                   onClick={() => {
                     signOutUser();
-                    toast.success("Log out");
+                    toast.success("Logout");
                   }}
                 >
                   Logout
@@ -95,7 +170,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="login" className="btn">
+                <Link
+                  to="login"
+                  className="text-sm text-[#E8252E] rounded-full font-semibold mr-1.5 bg-white px-3 py-1"
+                >
                   Login
                 </Link>
               </>

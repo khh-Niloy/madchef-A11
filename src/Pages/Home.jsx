@@ -51,6 +51,26 @@ const Home = () => {
 
   return (
     <div>
+      <div className="relative flex items-center justify-center h-[32rem] w-full">
+        <img
+          className="object-cover h-[32rem] w-full"
+          src="https://i.ibb.co.com/nLdV4bS/content.png"
+          alt=""
+        />
+
+        <div className="absolute w-[60%] text-center flex items-center flex-col justify-center">
+          <div>
+            <h1 className="text-5xl font-semibold text-[#ff2727]">Madchef</h1>
+            <p className="text-5xl font-semibold">Crafting Flavor Magic</p>
+          </div>
+          <p className="text-sm mt-3 w-[80%] text-black/70">
+            Dive into a culinary journey where every dish tells a story, crafted
+            with the freshest ingredients and a touch of innovation. Experience
+            the art of flavor!
+          </p>
+        </div>
+      </div>
+
       <div className="w-[80%] mx-auto pb-20 pt-8">
         <h1 className="text-center font-semibold text-2xl mb-10">
           Top 6 best-selling food items{" "}
