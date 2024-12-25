@@ -77,9 +77,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-[95%] lg:w-[75%] mx-auto mt-20 mb-20">
+      <div className="w-[90%] lg:w-[75%] mx-auto mt-20 mb-20">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-semibold">Tempt Your Taste Buds</h1>
+          <h1 className="lg:text-4xl text-2xl font-semibold">
+            Tempt Your Taste Buds
+          </h1>
           <p className="lg:text-sm text-xs mt-2">
             Explore an irresistible collection of mouthwatering dishes, <br />{" "}
             crafted with passion and bursting with flavors to delight your
@@ -89,9 +91,9 @@ const Home = () => {
         <Slider></Slider>
       </div>
 
-      <div className="w-[80%] mx-auto pb-20 pt-8">
+      <div className="w-[90%] lg:w-[80%] mx-auto pb-20 lg:pt-8 pt-16">
         <div className="mb-8 text-center">
-          <h1 className="text-center font-semibold text-4xl">
+          <h1 className="text-center font-semibold lg:text-4xl text-2xl">
             Top 6 best-selling food items{" "}
             <span className="text-xs font-normal">(by purchase count)</span>
           </h1>
@@ -102,7 +104,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-5 w-[80%] mx-auto">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 w-[90%] lg:w-[80%] mx-auto">
           {filterData.map((e) => (
             <div
               key={e._id}
@@ -145,7 +147,7 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="w-[80%] mx-auto pb-10">
+        <div className="w-[100%] lg:w-[80%] mx-auto pb-10">
           <div className="flex items-center justify-center mt-28 mb-10 flex-col">
             <h1 className="lg:text-4xl text-2xl font-semibold text-center">
               What Our Customers Say

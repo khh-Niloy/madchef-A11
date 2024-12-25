@@ -72,9 +72,16 @@ const Customer = () => {
                   isDarkMode ? "text-[white]" : "text-black/80"
                 }`}
               >
-                The food arrived hot and fresh, and it was absolutely delicious!
-                Every bite was full of flavor, and I couldn’t be happier with my
-                order. Definitely ordering again!
+                The food arrived hot and fresh,{" "}
+                <span className="lg:inline sm:inline hidden">
+                  {" "}
+                  and it was absolutely delicious! Every bite was full of
+                  flavor,{" "}
+                  <span className="lg:inline hidden">
+                    flavor, and I couldn’t be happier with my order. Definitely
+                    ordering again! The food arrived hot and fresh, flavor,{" "}
+                  </span>{" "}
+                </span>
               </p>
             </div>
           </SwiperSlide>
@@ -113,9 +120,15 @@ const Customer = () => {
                   isDarkMode ? "text-[white]" : "text-black/80"
                 }`}
               >
-                I’m so impressed! The portion size was generous, and the quality
-                was top-notch. The flavors were perfectly balanced, and the
-                delivery was right on time. Highly recommend!
+                I’m so impressed!{" "}
+                <span className="lg:inline sm:inline hidden">
+                  The portion size was generous, and the quality was top-notch.
+                  The flavors were perfectly balanced,{" "}
+                  <span className="lg:inline hidden">
+                    The flavors were perfectly balanced, and the delivery was
+                    right on time. Highly recommend!
+                  </span>{" "}
+                </span>
               </p>
             </div>
           </SwiperSlide>
@@ -154,9 +167,14 @@ const Customer = () => {
                   isDarkMode ? "text-[white]" : "text-black/80"
                 }`}
               >
-                This meal exceeded my expectations! The presentation was
-                beautiful, and the taste was even better. It’s clear that great
-                care went into preparing this. Will be a repeat customer!
+                This meal exceeded my expectations!{" "}
+                <span className="lg:inline sm:inline hidden">
+                  The presentation was beautiful, and the taste was even better.
+                  <span className="lg:inline hidden">
+                    It’s clear that great care went into preparing this. Will be
+                    a repeat customer! This meal exceeded my expectations!
+                  </span>{" "}
+                </span>
               </p>
             </div>
           </SwiperSlide>
@@ -195,9 +213,15 @@ const Customer = () => {
                   isDarkMode ? "text-[white]" : "text-black/80"
                 }`}
               >
-                Absolutely amazing! The food was packed with flavor, and
-                everything was cooked to perfection. The convenience of delivery
-                made it even better.
+                Absolutely amazing!{" "}
+                <span className="lg:inline sm:inline hidden">
+                  The food was packed with flavor, and everything was cooked to
+                  perfection.{" "}
+                  <span className="lg:inline hidden">
+                    perfection. The convenience of delivery made it even better.
+                    Absolutely amazing! perfection.{" "}
+                  </span>{" "}
+                </span>
               </p>
             </div>
           </SwiperSlide>

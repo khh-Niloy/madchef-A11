@@ -79,7 +79,7 @@ const Slider = () => {
             onClick={handlePrev}
             className={`cursor-pointer ${
               isDarkMode ? "bg-[#FFC383] text-black" : "bg-black/80 text-white"
-            } p-2 text-4xl rounded-full rotate-180 custom-prev absolute lg:-top-[11.5rem] top-[1.5rem] right-[0.5rem] xl:right-[31rem] lg:right-[23rem]`}
+            } p-2 text-4xl rounded-full rotate-180 custom-prev absolute lg:-top-[11.5rem] top-[1.5rem] right-[0.5rem] xl:right-[31rem] lg:right-[25rem]`}
           >
             <button className="custom-prev">&lt;</button>
           </FiChevronRight>
@@ -88,7 +88,7 @@ const Slider = () => {
             onClick={handleNext}
             className={`cursor-pointer ${
               isDarkMode ? "bg-[#FFC383] text-black" : "bg-black/80 text-white"
-            } p-2 text-4xl rounded-full custom-next absolute lg:-top-[11.5rem] top-[1.5rem] -right-[2.5rem] xl:left-[31rem] lg:left-[23rem]`}
+            } p-2 text-4xl rounded-full custom-next absolute lg:-top-[11.5rem] top-[1.5rem] -right-[2.5rem] xl:left-[31rem] lg:left-[25rem]`}
           >
             <button className="custom-next">&gt;</button>
           </FiChevronRight>
