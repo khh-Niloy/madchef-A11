@@ -96,13 +96,40 @@ const Navbar = () => {
   const profileLinks = (
     <>
       <li>
-        <NavLink to="/myfood">My Foods</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/myfood"
+        >
+          My Foods
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/addfood">Add Food</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/addfood"
+        >
+          Add Food
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/myorder">My Orders</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-black font-semibold underline text-md duration-300"
+              : "text-black font-light duration-300"
+          }
+          to="/myorder"
+        >
+          My Orders
+        </NavLink>
       </li>
     </>
   );
@@ -110,7 +137,13 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <div className="navbar bg-[#E8252E]">
+        <div
+          className={`navbar ${
+            isDarkMode
+              ? "bg-[#191a23] duration-300"
+              : "bg-[#E8252E] duration-300"
+          }`}
+        >
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="ml-2 lg:hidden">
@@ -159,7 +192,9 @@ const Navbar = () => {
             {user ? (
               <>
                 <button
-                  className="text-sm text-[#E8252E] rounded-full font-semibold mr-2 bg-white px-3 py-1 hover:scale-[1.05] duration-300"
+                  className={`text-sm text-[#E8252E] rounded-full font-semibold mr-2 ${
+                    isDarkMode ? "bg-[#E8252E] text-white" : "bg-white"
+                  } px-3 py-1 hover:scale-[1.05] duration-300`}
                   onClick={() => {
                     signOutUser();
                     toast.success("Logout");

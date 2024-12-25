@@ -1,25 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "../Components/Slider";
 import Customer from "../Components/Customer";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Home = () => {
-  //   const [homeData, sethomeData] = useState([]);
-  //   const navigation = useNavigation()
-  //   console.log(navigation)
-
-  //   useEffect(() => {
-  //     fetchData();
-  //   }, []);
-
-  //   async function fetchData() {
-  //     const { data } = await axios.get(
-  //       `https://madchef-server-side.vercel.app/allfood`
-  //     );
-  //     sethomeData(data);
-  //   }
+  const { isDarkMode } = useContext(DarkModeContext);
 
   async function fetchFoodData() {
     const { data } = await axios.get(
@@ -60,12 +48,16 @@ const Home = () => {
           alt=""
         />
 
-        <div className="absolute lg:w-[60%] text-center flex items-center flex-col justify-center">
+        <div
+          className={`absolute ${
+            isDarkMode && "text-black"
+          } lg:w-[60%] text-center flex items-center flex-col justify-center`}
+        >
           <div>
             <h1 className="lg:text-5xl text-4xl font-semibold text-[#ff2727]">
               Madchef
             </h1>
-            <p className="lg:text-5xl text-4xl font-semibold">
+            <p className={`lg:text-5xl text-4xl font-semibold`}>
               Crafting Flavor Magic
             </p>
           </div>
@@ -92,7 +84,7 @@ const Home = () => {
       </div>
 
       <div className="w-[90%] lg:w-[80%] mx-auto pb-20 lg:pt-8 pt-16">
-        <div className="mb-8 text-center">
+        <div className="mb-12 text-center">
           <h1 className="text-center font-semibold lg:text-4xl text-2xl">
             Top 6 best-selling food items{" "}
             <span className="text-xs font-normal">(by purchase count)</span>
@@ -108,10 +100,12 @@ const Home = () => {
           {filterData.map((e) => (
             <div
               key={e._id}
-              className="card card-compact bg-base-100 shadow-xl"
+              className={`card card-compact bg-base-100 shadow-xl ${
+                isDarkMode && "text-black"
+              }`}
             >
               <figure className="h-[10rem] drop-shadow-xl relative">
-                <p className="text-[9px] left-3 bottom-3 drop-shadow-xl absolute bg-white px-3 py-1 rounded-lg">
+                <p className="text-[9px] left-3 bottom-3 drop-shadow-xl font-medium absolute bg-white px-3 py-1 rounded-lg">
                   Purchase Count: {e.purchase_count}
                 </p>
                 <img

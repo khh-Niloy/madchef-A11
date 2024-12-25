@@ -52,7 +52,7 @@ const Customer = () => {
                 <div className="lg:-translate-y-2 -translate-y-1">
                   <h1
                     className={`font-semibold lg:text-lg text-md mt-2 ${
-                      isDarkMode ? "text-[#FFCA80]" : "text-[black]"
+                      isDarkMode ? "text-white" : "text-[black]"
                     }`}
                   >
                     Niloy
@@ -101,7 +101,7 @@ const Customer = () => {
                 <div className="lg:-translate-y-2 -translate-y-1">
                   <h1
                     className={`font-semibold text-lg mt-2 ${
-                      isDarkMode ? "text-[#FFCA80]" : "text-[black]"
+                      isDarkMode ? "text-white" : "text-[black]"
                     }`}
                   >
                     Hasib
@@ -148,7 +148,7 @@ const Customer = () => {
                 <div className="lg:-translate-y-2 -translate-y-1">
                   <h1
                     className={`font-semibold lg:text-lg text-md mt-2 ${
-                      isDarkMode ? "text-[#FFCA80]" : "text-[black]"
+                      isDarkMode ? "text-white" : "text-[black]"
                     }`}
                   >
                     Hasan
@@ -194,7 +194,7 @@ const Customer = () => {
                 <div className="lg:-translate-y-2 -translate-y-1">
                   <h1
                     className={`font-semibold lg:text-lg text-md mt-2 ${
-                      isDarkMode ? "text-[#FFCA80]" : "text-[black]"
+                      isDarkMode ? "text-white" : "text-[black]"
                     }`}
                   >
                     Abdullah
@@ -233,7 +233,7 @@ const Customer = () => {
               onClick={handlePrev}
               className={`cursor-pointer ${
                 isDarkMode
-                  ? "bg-[#FFC383] text-black"
+                  ? "bg-white text-black"
                   : "bg-black/80 text-white"
               } p-2 text-4xl rounded-xl rotate-180 custom-prev`}
             >
@@ -243,7 +243,7 @@ const Customer = () => {
               onClick={handleNext}
               className={`cursor-pointer ${
                 isDarkMode
-                  ? "bg-[#FFC383] text-black"
+                  ? "bg-white text-black"
                   : "bg-black/80 text-white"
               } p-2 text-4xl rounded-xl custom-next`}
             >
