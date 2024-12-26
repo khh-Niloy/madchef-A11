@@ -48,18 +48,18 @@ const Login = () => {
     >
       <div className="w-full h-full bg-black/75 z-0 absolute"></div>
 
-      <div className="flex w-[80%] mx-auto py-10">
-        <div className="w-1/2 z-40">
-          <div className=" h-[33rem]">
+      <div className="flex lg:w-[80%] w-[85%] mx-auto py-10 md:flex-row flex-col-reverse">
+        <div className="md:w-1/2 z-40 md:flex hidden">
+          <div className=" lg:h-[33rem] md:h-[34rem]">
             <img
-              className="z-40 object-cover w-full h-[33rem] rounded-tl-2xl rounded-bl-2xl"
+              className="z-40 object-cover w-full lg:h-[33rem] md:h-[34rem] rounded-tl-2xl rounded-bl-2xl"
               src="https://img.freepik.com/free-photo/side-view-fried-meat-with-french-fries-ketchup_141793-4908.jpg?t=st=1735155958~exp=1735159558~hmac=ac21c60014a4072f8e1d91e378ef64e152b728427161ad87a667522bccdc449b&w=900"
               alt=""
             />
           </div>
         </div>
 
-        <div className="z-10 w-1/2 border border-black/20 rounded-tr-2xl rounded-br-2xl px-10 py-8 bg-white">
+        <div className="z-10 md:w-1/2 border border-black/20 md:rounded-tr-2xl md:rounded-br-2xl md:rounded-bl-none md:rounded-tl-none rounded-2xl px-10 py-8 bg-white">
           <div className="text-left mb-5">
             <h1 className="text-4xl font-bold">Welcome!</h1>
             <p className="text-xs">Please login to your account</p>
