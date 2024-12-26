@@ -12,8 +12,7 @@ const MyOrder = () => {
   const { user } = useContext(AuthContext);
   const [myorder, setmyorder] = useState([]);
   const axiosSecure = useAxiosSecure();
-    const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
-  
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     fetchData();
@@ -49,7 +48,9 @@ const MyOrder = () => {
         {myorder.map((e) => (
           <div
             key={e._id}
-            className={`relative card card-compact bg-base-100 shadow-xl ${isDarkMode && "text-black"}`}
+            className={`relative card card-compact bg-base-100 shadow-xl ${
+              isDarkMode && "text-black"
+            }`}
           >
             <figure className="rounded-2xl shadow-xl h-[10rem]">
               <img

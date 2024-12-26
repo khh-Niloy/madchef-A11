@@ -11,20 +11,12 @@ const MyFood = () => {
   const [myfood, setmyfood] = useState([]);
   const axiosSecure = useAxiosSecure();
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
-  
 
   useEffect(() => {
     fetchData();
   }, [user]);
 
   const fetchData = () => {
-    /* axios
-      .get(
-        `https://madchef-server-side.vercel.app/allfood/adminfood/${user?.email}`
-      )
-      .then((data) => {
-        setmyfood(data.data);
-      }); */
     axiosSecure.get(`/allfood/adminfood/${user?.email}`).then((data) => {
       setmyfood(data.data);
     });
@@ -42,7 +34,9 @@ const MyFood = () => {
         {myfood.map((e) => (
           <div
             key={e._id}
-            className={`relative card card-compact bg-base-100 shadow-xl ${isDarkMode && "text-black"}`}
+            className={`relative card card-compact bg-base-100 shadow-xl ${
+              isDarkMode && "text-black"
+            }`}
           >
             <figure className="rounded-2xl shadow-xl h-[10rem]">
               <img

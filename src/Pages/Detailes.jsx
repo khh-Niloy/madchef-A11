@@ -88,9 +88,3 @@ const Detailes = () => {
 };
 
 export default Detailes;
-
-{
-  /* <Link to={`/purchase/${foodData._id}`}>
-  <button className="btn btn-neutral w-full mt-5">Purchase</button>
-</Link>; */
-}

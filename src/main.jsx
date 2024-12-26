@@ -56,10 +56,6 @@ const router = createBrowserRouter([
             <Purchase></Purchase>
           </PrivateRouter>
         ),
-        // loader: ({ params }) =>
-        //   fetch(
-        //     `https://madchef-server-side.vercel.app/allfood/foodDetailes/${params.id}`
-        //   ),
       },
       {
         path: "/gallery",
