@@ -22,7 +22,6 @@ const Update = () => {
         updatedFormObjData
       )
       .then((res) => {
-        console.log(res);
         toast.success("Updated");
         navigate("/myfood")
       });

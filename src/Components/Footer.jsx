@@ -47,7 +47,7 @@ const Footer = () => {
               for any query
             </h1>
 
-            <form className="shadow-xl text-black">
+            <div className="shadow-xl text-black">
               <fieldset className=" bg-white">
                 <div className="">
                   <input
@@ -60,7 +60,7 @@ const Footer = () => {
                   </button>
                 </div>
               </fieldset>
-            </form>
+            </div>
           </aside>
 
           <div className="flex lg:flex-row flex-col lg:gap-20 gap-10 mt-10 lg:mt-16 z-20 relative">

@@ -33,7 +33,6 @@ const AddFood = () => {
     axios
       .post(`https://madchef-server-side.vercel.app/addfood`, formObjData)
       .then((res) => {
-        // console.log(res);
         e.target.reset();
         toast.success("New food item added successfully!");
         navigate("/myfood");

@@ -15,8 +15,6 @@ const Purchase = () => {
   const [data, setdata] = useState([]);
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
-  // console.log(id)
-
   useEffect(() => {
     axiosSecure.get(
       `https://madchef-server-side.vercel.app/checkToken/${user?.email}`
@@ -27,12 +25,6 @@ const Purchase = () => {
     fetchData();
   }, [id]);
 
-  /* const fetchData2 = () => {
-    axiosSecure.get(
-      `https://madchef-server-side.vercel.app/checkToken/${user?.email}`
-    );
-  };
- */
   function fetchData() {
     axiosSecure.get(`/allfood/fooddetailes/purchase/${id}`).then((data) => {
       setdata(data.data);
@@ -53,12 +45,9 @@ const Purchase = () => {
     formObjData.foodid = data._id;
     formObjData.purchaseQuantity = parseInt(formObjData.purchaseQuantity);
 
-    console.log(formObjData);
-
     axios
       .post(`https://madchef-server-side.vercel.app/addorder`, formObjData)
       .then((res) => {
-        console.log(res);
         e.target.reset();
         navigate("/allfood");
         toast.success("Order placed successfully!");

@@ -31,7 +31,6 @@ const MyOrder = () => {
         `https://madchef-server-side.vercel.app/allorder/orderdelete/${_id}`
       )
       .then((res) => {
-        console.log(res);
         toast.error("Order deleted");
         fetchData();
       });

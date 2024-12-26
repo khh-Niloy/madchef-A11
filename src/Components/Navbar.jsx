@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
@@ -9,7 +9,6 @@ import { PiSunFill } from "react-icons/pi";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
-  console.log(user);
 
   const links = (
     <>
