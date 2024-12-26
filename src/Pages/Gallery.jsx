@@ -20,7 +20,7 @@ const Gallery = () => {
     <div>
       <PageTitle
         image="https://img.freepik.com/free-photo/hand-cooking-mushrooms-pot_32991-2593.jpg?t=st=1735132689~exp=1735136289~hmac=07f2e8f7d6e6f573d2fc7421d1365390f3f7285dd26b1a764b5bd0a24d45a945&w=1380"
-        text="A Feast for Your Eyes"
+        text="Gallery"
         subtext="Discover a Vibrant Gallery of Culinary Masterpieces from Around the World"
       ></PageTitle>
 

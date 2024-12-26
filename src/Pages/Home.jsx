@@ -66,6 +66,12 @@ const Home = () => {
             with the freshest ingredients and a touch of innovation. Experience
             the art of flavor!
           </p>
+
+          <Link to="/allfood">
+            <button className="bg-[#FF2727] text-white text-xs px-3 py-1.5 mt-3 rounded-full">
+              See All Foods
+            </button>
+          </Link>
         </div>
       </div>
 

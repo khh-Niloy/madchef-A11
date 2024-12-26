@@ -9,7 +9,7 @@ import { PiSunFill } from "react-icons/pi";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
-  // console.log(user);
+  console.log(user);
 
   const links = (
     <>
@@ -224,7 +224,6 @@ const Navbar = () => {
                   >
                     <div className="w-10 rounded-full">
                       <img
-                        referrar-policy="no-refferrar"
                         alt="Tailwind CSS Navbar component"
                         src={user?.photoURL}
                       />

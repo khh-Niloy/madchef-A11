@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import useAxiosSecure from "../Custom/useAxiosSecure";
+import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Purchase = () => {
   // const data = useLoaderData();
@@ -13,6 +14,7 @@ const Purchase = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const [data, setdata] = useState([]);
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
 
   // console.log(id)
 
@@ -55,12 +57,16 @@ const Purchase = () => {
   return (
     <div>
       <div>
-        <div className="hero bg-base-100 pb-20 pt-5">
+        <div
+          className={`hero ${
+            isDarkMode ? "bg-[#191A23]" : "bg-white"
+          } pb-20 pt-5`}
+        >
           <div className="hero-content flex-col w-full">
             <div className="text-center lg:text-left">
               <h1 className="text-3xl font-bold">Food Purchase</h1>
             </div>
-            <div className="card bg-base-100 w-[80%] shrink-0 shadow-2xl">
+            <div className={`card bg-base-100 w-[80%] shrink-0 shadow-2xl ${isDarkMode && "text-black"}`}>
               <form onSubmit={handleSubmit} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -145,7 +151,7 @@ const Purchase = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Purchase</button>
+                  <button className="btn hover:bg-blue-600 hover:border-none btn-neutral text-white w-full mt-2">Purchase</button>
                 </div>
               </form>
             </div>

@@ -26,19 +26,21 @@ const Register = () => {
     const isAtLeast6Chars = /.{6,}/;
 
     if (!hasUppercase.test(password)) {
-      seterror("at least one uppercase letter");
+      seterror("*at least one uppercase letter");
       return;
     }
 
     if (!hasLowercase.test(password)) {
-      seterror("at least one lowercase letter");
+      seterror("*at least one lowercase letter");
       return;
     }
 
     if (!isAtLeast6Chars.test(password)) {
-      seterror("at least 6 characters long");
+      seterror("*at least 6 characters long");
       return;
     }
+
+    seterror("")
 
     const profile = {
       displayName: name,
@@ -146,7 +148,7 @@ const Register = () => {
                 className="absolute right-5 top-[3.3rem]"
               ></FaEye>
             </div>
-            <p>{error}</p>
+            <p className="text-sm mt-2 text-red-600">{error}</p>
             <div className="form-control mt-6">
               <button
                 className="border border-black rounded-xl

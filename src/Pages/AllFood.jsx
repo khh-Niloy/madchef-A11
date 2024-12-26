@@ -25,7 +25,7 @@ const AllFood = () => {
     <div>
       <PageTitle
         image="https://img.freepik.com/free-photo/banner-delicious-tacos_23-2150831065.jpg?t=st=1735131997~exp=1735135597~hmac=0166f35354e53b1fd3c54b53cb8d567bfd16d6edce8ac5330978f877aa4e3711&w=1380"
-        text="Welcome to the World of Flavorful Delights"
+        text="All Food"
         subtext="Explore Our All-Time Favorite Dishes Handpicked to Satisfy Your Cravings"
       ></PageTitle>
 

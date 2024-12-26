@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { isValidElement, useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Update = () => {
   const data = useLoaderData();
-    const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Update = () => {
       .then((res) => {
         console.log(res);
         toast.success("Updated");
+        navigate("/myfood")
       });
   }
 
