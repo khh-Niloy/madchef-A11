@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Slider from "../Components/Slider";
 import Customer from "../Components/Customer";
 import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
+import About from "../Components/About";
 
 const Home = () => {
   const { isDarkMode } = useContext(DarkModeContext);
@@ -145,6 +146,19 @@ const Home = () => {
               See All
             </button>
           </Link>
+        </div>
+
+        <div className="w-[85%] mx-auto mt-24">
+          <div className="flex flex-col items-center justify-center mb-10">
+            <h1 className="lg:text-3xl text-2xl font-semibold">
+              Savor the Excellence
+            </h1>
+            <p className="lg:text-sm text-xs text-center mt-2">
+              Your ultimate destination for exceptional dining and unforgettable
+              experiences.
+            </p>
+          </div>
+          <About></About>
         </div>
 
         <div className="w-[100%] lg:w-[80%] mx-auto pb-10">
