@@ -26,11 +26,11 @@ const MyFood = () => {
     <div>
       <div className="w-[80%] mx-auto flex items-center mt-10 justify-center flex-col">
         <h1 className="text-3xl font-semibold">My Food Items</h1>
-        <p className="text-sm">
+        <p className="text-sm text-center">
           Manage and review all the food items you've added to the menu.
         </p>
       </div>
-      <div className="w-[80%] mx-auto pb-20 pt-10 grid lg:grid-cols-4 gap-8">
+      <div className="w-[80%] mx-auto pb-20 pt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {myfood.map((e) => (
           <div
             key={e._id}

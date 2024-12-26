@@ -44,7 +44,7 @@ const MyOrder = () => {
         </p>
       </div>
 
-      <div className="w-[80%] mx-auto pb-20 pt-10 grid grid-cols-4 gap-8">
+      <div className="w-[80%] mx-auto pb-20 pt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {myorder.map((e) => (
           <div
             key={e._id}
