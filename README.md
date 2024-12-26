@@ -1,4 +1,4 @@
-# Food E-Commerce Platform
+# Madchef
 
 ## Purpose
 
