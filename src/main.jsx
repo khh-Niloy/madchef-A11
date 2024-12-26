@@ -60,6 +60,7 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
+        loader: () => fetch("https://madchef-server-side.vercel.app/allfood"),
       },
       {
         path: "/myfood",
