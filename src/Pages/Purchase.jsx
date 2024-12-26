@@ -7,7 +7,6 @@ import useAxiosSecure from "../Custom/useAxiosSecure";
 import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
 
 const Purchase = () => {
-  // const data = useLoaderData();
   const { user } = useContext(AuthContext);
   const [date, setdate] = useState(new Date(Date.now()));
   const navigate = useNavigate();
@@ -19,10 +18,22 @@ const Purchase = () => {
   // console.log(id)
 
   useEffect(() => {
+    axiosSecure.get(
+      `https://madchef-server-side.vercel.app/checkToken/${user?.email}`
+    );
+  }, [user]);
+
+  useEffect(() => {
     fetchData();
   }, [id]);
 
-  async function fetchData() {
+  /* const fetchData2 = () => {
+    axiosSecure.get(
+      `https://madchef-server-side.vercel.app/checkToken/${user?.email}`
+    );
+  };
+ */
+  function fetchData() {
     axiosSecure.get(`/allfood/fooddetailes/purchase/${id}`).then((data) => {
       setdata(data.data);
     });
@@ -66,7 +77,11 @@ const Purchase = () => {
             <div className="text-center lg:text-left">
               <h1 className="text-3xl font-bold">Food Purchase</h1>
             </div>
-            <div className={`card bg-base-100 w-[80%] shrink-0 shadow-2xl ${isDarkMode && "text-black"}`}>
+            <div
+              className={`card bg-base-100 w-[80%] shrink-0 shadow-2xl ${
+                isDarkMode && "text-black"
+              }`}
+            >
               <form onSubmit={handleSubmit} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -151,7 +166,9 @@ const Purchase = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn hover:bg-blue-600 hover:border-none btn-neutral text-white w-full mt-2">Purchase</button>
+                  <button className="btn hover:bg-blue-600 hover:border-none btn-neutral text-white w-full mt-2">
+                    Purchase
+                  </button>
                 </div>
               </form>
             </div>

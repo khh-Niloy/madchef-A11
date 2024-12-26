@@ -4,11 +4,23 @@ import { AuthContext } from "../Context/AuthContextProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../DarkModeProvider/DarkModeProvider";
+import useAxiosSecure from "../Custom/useAxiosSecure";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    fetchData();
+  }, [user]);
+
+  const fetchData = () => {
+    axiosSecure.get(
+      `https://madchef-server-side.vercel.app/checkToken/${user?.email}`
+    );
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
